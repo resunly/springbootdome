@@ -1,0 +1,10 @@
+server:
+    port: 8090
+logging:
+  config: classpath:logback-spring.xml
+  path: /applogs
+  level:
+    root: info
+spring:
+  profiles:
+    active: dev
