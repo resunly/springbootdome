@@ -8,8 +8,6 @@ logging:
 spring:
   profiles:
     active: dev
-  datasource:
-    url: jdbc:mysql://localhost:3306/test
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
+
+hank:
+  testConfig: TestDriver
