@@ -8,6 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.crypto.*;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.IvParameterSpec;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 /**
  * Created by hank.he on 2017/8/2.
  */
@@ -27,11 +35,15 @@ public class TestDataBaseConfig {
     }
 */
     @Autowired
-    private DataBaseConfig config;
+    private Environment env;
+
+    //@Autowired
+    //private DataBaseConfig config;
     @Test
     public void testGetDataBaseConfig() {
-        logger.info("self Config Driver:" + config.getDriver());
-        logger.info("default config hank.testConfig:" + config.getHankConfig());
+        //logger.info("service Environment:" + env.getProperty("spring.profiles.active"));
+        ////logger.info("self Config Driver:" + config.getDriver());
+        //logger.info("default config hank.testConfig:" + config.getHankConfig());
     }
     /*@Autowired
     private ConfigDefault configDefault;
@@ -50,4 +62,24 @@ public class TestDataBaseConfig {
         logger.info("ConfigdData get self properties:" + configdData.getUsername());
 
     }*/
+
+    /*public static byte[] encrypt(byte[] rawKeyData, byte[] iv, String str)
+            throws InvalidKeyException, NoSuchAlgorithmException,
+            IllegalBlockSizeException, BadPaddingException,
+            NoSuchPaddingException, InvalidKeySpecException {
+        IvParameterSpec zeroIv = new IvParameterSpec(iv);
+        DESKeySpec dks = new DESKeySpec(rawKeyData);
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+        SecretKey key = keyFactory.generateSecret(dks);
+        Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+        try {
+            cipher.init(Cipher.ENCRYPT_MODE, key, zeroIv);
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        }
+        byte data[] = str.getBytes();
+        byte[] encryptedData = cipher.doFinal(data);
+        return encryptedData;
+    }*/
+
 }

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FrameworkApplication extends SpringBootServletInitializer {
 
+    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(FrameworkApplication.class);
     }
